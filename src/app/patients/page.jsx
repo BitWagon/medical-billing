@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import DataTable from "../../components/DataTable";
 
 export default function PatientsPage() {
   const [patients, setPatients] = useState([
@@ -17,6 +18,18 @@ export default function PatientsPage() {
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.id.toLowerCase().includes(search.toLowerCase())
   );
+
+  const columns = [
+    { header: "Patient ID", accessor: "id" },
+    { header: "Name", accessor: "name" },
+    { header: "Age", accessor: "age" },
+    { header: "Phone", accessor: "phone" },
+  ];
+
+  const data = [
+    { id: "P001", name: "John Smith", age: 34, phone: "123-456-7890" },
+    { id: "P002", name: "Sarah Lee", age: 28, phone: "987-654-3210" },
+  ];
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -51,7 +64,7 @@ export default function PatientsPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="bg-white p-6 rounded-xl shadow-md overflow-x-auto"
+        className="bg-white p-6 rounded-xl shadow-md overflow-x-auto mb-10"
       >
         <table className="w-full text-left text-sm">
           <thead>
@@ -94,6 +107,15 @@ export default function PatientsPage() {
           </tbody>
         </table>
       </motion.div>
+
+      {/* DataTable Example Usage */}
+      <DataTable
+        columns={columns}
+        data={data}
+        actions
+        onEdit={(row) => console.log("Edit:", row)}
+        onDelete={(row) => console.log("Delete:", row)}
+      />
 
     </div>
   );

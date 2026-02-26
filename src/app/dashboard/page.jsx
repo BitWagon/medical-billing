@@ -1,6 +1,8 @@
 'use client';
 
 import { motion } from "framer-motion";
+import DashboardCard from "../../components/DashboardCard";
+import Charts from "@/components/Charts";
 
 export default function DashboardPage() {
   return (
@@ -36,6 +38,38 @@ export default function DashboardPage() {
               A
             </div>
           </div>
+        </div>
+
+        {/* DashboardCard Section */}
+        <div className="grid md:grid-cols-4 gap-6 mb-10">
+          <DashboardCard
+            title="Total Patients"
+            value="1,245"
+            icon="👥"
+            trend="up"
+            trendValue="12%"
+          />
+          <DashboardCard
+            title="Total Claims"
+            value="865"
+            icon="📄"
+            trend="up"
+            trendValue="8%"
+          />
+          <DashboardCard
+            title="Pending Claims"
+            value="42"
+            icon="⏳"
+            trend="down"
+            trendValue="5%"
+          />
+          <DashboardCard
+            title="Revenue"
+            value="$124,500"
+            icon="💰"
+            trend="up"
+            trendValue="15%"
+          />
         </div>
 
         {/* KPI Cards */}
@@ -88,7 +122,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Recent Claims Table */}
-        <div className="bg-white p-6 rounded-xl shadow-md">
+        <div className="bg-white p-6 rounded-xl shadow-md mb-10">
           <h2 className="text-xl font-semibold mb-6">
             Recent Claims
           </h2>
@@ -132,6 +166,11 @@ export default function DashboardPage() {
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* Charts Section */}
+        <div className="p-6 bg-gray-100 min-h-screen">
+          <Charts />
         </div>
 
       </div>
